@@ -1,3 +1,8 @@
+/*
+#include<bits/stdc++.h>
+using namespace std;
+が先頭に必要
+*/
 struct Dijkstra
 {
   using ll=long long;
