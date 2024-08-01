@@ -10,6 +10,9 @@ public:
   vi get_mobius(int);
   vi get_d(int);
   vi get_prime();
+  ll mobius(ll);
+  ll totient(ll);
+  ll d(ll);
   Sieve(int N=9){
     make_sieve(N);
     make_prime_table(N);
@@ -62,6 +65,25 @@ Sieve::vi Sieve::get_d(int N){
   return res;
 }
 Sieve::vi Sieve::get_prime(){ return prime_table; }
+Sieve::ll Sieve::mobius(ll N){
+  auto factor=factorint(N);
+  for(const auto& f:factor)if(f.second>1)return 0;
+  if(factor.size()%2==0)return 1;
+  else return -1;
+}
+Sieve::ll Sieve::totient(ll N){
+  auto factor=factorint(N);
+  for(const auto& f:factor){
+    N*=f.first-1; N/=f.first;
+  }
+  return N;
+}
+Sieve::ll Sieve::d(ll N){
+  auto factor=factorint(N);
+  ll res=1;
+  for(const auto& f:factor)res*=f.second+1;
+  return res;
+}
 
 void Sieve::make_sieve(int N){
   sieve.resize(N+1, true);
