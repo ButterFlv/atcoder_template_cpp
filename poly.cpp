@@ -19,7 +19,7 @@ struct Poly{
       res+=to_string(mon.second);
       for(auto& sym:mon.first){
         res+="*"+sym.first;
-        if(sym.second>1)res+="**"+to_string(sym.second);
+        if(sym.second>1)res+="^"+to_string(sym.second);
       }
       res+=" ";
     }
