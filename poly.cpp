@@ -14,14 +14,17 @@ struct Poly{
   string s(){
     if(a.size()==0)return "0";
     string res;
-    for(auto& mon:a){
-      if(mon.second>0)res+='+';
-      res+=to_string(mon.second);
-      for(auto& sym:mon.first){
-        res+="*"+sym.first;
-        if(sym.second>1)res+="^"+to_string(sym.second);
+    for(auto itr=a.begin();itr!=a.end();++itr){
+      if(itr!=a.begin()&&itr->second>0)res+=" +";
+      if(itr->first.empty()){ res+=to_string(itr->second);continue; }
+      if(abs(itr->second)!=1)
+        res+=to_string(itr->second)+"*";
+      auto rbegin_itr=itr->first.end(); advance(rbegin_itr, -1);
+      for(auto sym=itr->first.begin();sym!=itr->first.end();++sym){
+        res+=sym->first;
+        if(sym->second>1)res+="^"+to_string(sym->second);
+        if(sym!=rbegin_itr)res+="*";
       }
-      res+=" ";
     }
     return res;
   }
@@ -78,6 +81,16 @@ struct Poly{
     }
     return new_Poly;
   }
+  // 範囲for文を回すためのオブジェクトを返す
+  // vector<pair<Poly,ll>>
+  vector<pair<Poly,ll>> loop(){
+    vector<pair<Poly, ll>> res;
+    for(auto& mon:a){
+      res.push_back(make_pair(Poly(), mon.second));
+      res.back().first.a.emplace(mon.first, 1);
+    }
+    return res;
+  };
 };
 
 map<string,int> merge_msi(const map<string,int>& l, const map<string,int>& r){
