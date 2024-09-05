@@ -1,9 +1,12 @@
-#define _GLIBCXX_DEBUG
-#include<bits/stdc++.h>
+// #define _GLIBCXX_DEBUG
+// #include<bits/stdc++.h>
+#include<iostream>
+#include<cassert>
+#include<iomanip>
 using namespace std;
 
 int main(){
   ios::sync_with_stdio(false);
-  std::cin.tie(nullptr);
+  cin.tie(nullptr);
   cout<<fixed<<setprecision(15);
 }
