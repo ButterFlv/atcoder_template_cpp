@@ -61,7 +61,7 @@ private:
     que.emplace(sv, -1, id());
     while(!que.empty()){
       auto [v,par,s]=que.front(); que.pop();
-      if(used[v])continue; used[v]=true;
+      if(used[v]){continue;} used[v]=true;
       int L=edge[v].size(); if(L==0)continue;
       for(int i=0;i<L;i++)if(edge[v][i].first==par){
         dp[v][i]=s; break;
