@@ -1,11 +1,38 @@
-vector<vector<int>> doubling(
-    int size, unsigned long long times, function<int(int)> f){
-  int log2_times=0;
-  while((1ULL<<(log2_times+1))<=times)log2_times++;
-  vector<vector<int>> dp(log2_times+1, vector<int>(size));
-  for(int i=0;i<size;i++)dp[0][i]=f(i);
-  for(int i=1;i<=log2_times;i++)
-    for(int j=0;j<size;j++)
-      dp[i][j]=dp[i-1][dp[i-1][j]];
-  return dp;
-}
+#include<vector>
+#include<cassert>
+/**
+* ダブリングをするクラス
+* arg_vector は サイズを N として
+* * a\in arg_vector => a\in [0, N)
+* が要求される.
+* 他のデータ構造を組み込みたいときは適切にナンバリングするとよい
+*/
+class Doubling{
+private:
+  int size, max_depth; long long max_K;
+  std::vector<std::vector<int>> dp;
+  int log_2(long long K){
+    int res=0;
+    while((1LL<<res)<K)res++;
+    return res;
+  }
+public:
+  Doubling(const std::vector<int>& arg_vector, long long K){
+    max_depth=log_2(K)+1;
+    size=arg_vector.size();
+    max_K=K;
+    dp.assign(max_depth, std::vector<int>(size));
+    dp[0]=arg_vector;
+    for(int d=1;d<max_depth;d++)for(int i=0;i<size;i++)
+      dp[d][i]=dp[d-1][dp[d-1][i]];
+  }
+  int get(int s, long long k)const{
+    assert(k<=max_K);
+    int res=s, d=0;
+    while(k>0){
+      if(k&1)res=dp[d][res];
+      d++; k>>=1;
+    }
+    return res;
+  }
+};
