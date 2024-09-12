@@ -5,7 +5,7 @@
 #include<iomanip>
 using namespace std;
 
-int main(){
+int main(void){
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   cout<<fixed<<setprecision(15);
