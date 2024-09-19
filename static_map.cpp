@@ -1,10 +1,11 @@
-#include<vector>
-#include<tuple>
-#include<algorithm>
-template<typename KEY, typename VAL>
+#include <vector>
+#include <utility>
+#include <algorithm>
+#include <cassert>
+template <typename KEY, typename VAL>
 class static_map{
 private:
-  std::vector<std::pair<KEY,VAL>> a;
+  std::vector<std::pair<KEY,VAL > > a;
   int my_lower_bound(const KEY& key)const{
     int ok=a.size(), ng=-1;
     while(ok-ng>1){
@@ -17,7 +18,7 @@ private:
 public:
   static_map(void){}
   void insert(const KEY& key, const VAL& val){
-    a.push_back(std::make_pair(key, val));
+    a.emplace_back(std::make_pair(key, val));
   }
   void make(void){ std::sort(a.begin(), a.end()); }
   bool contains(const KEY& key)const{
