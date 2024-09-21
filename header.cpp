@@ -4,9 +4,8 @@
 #include<cassert>
 #include<iomanip>
 using namespace std;
-
 int main(void){
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
-  cout<<fixed<<setprecision(15);
+  std::ios::sync_with_stdio(false);
+  std::cin.tie(nullptr);
+  std::cout<<std::fixed<<std::setprecision(15);
 }
