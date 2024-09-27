@@ -28,7 +28,7 @@ public:
     is_built=false;
     a.emplace_back(std::make_pair(key, val));
   }
-  bool count(const KEY& key)const{
+  bool count(const KEY& key){
     if(!is_built)make();
     int idx=my_lower_bound(key);
     return idx!=a.size()&&a[idx].first==key;
