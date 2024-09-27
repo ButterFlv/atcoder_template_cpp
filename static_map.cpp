@@ -21,7 +21,7 @@ private:
     }
     return ok;
   }
-  void make(void){ std::sort(a.begin(), a.end()); }
+  void make(void){ std::sort(a.begin(), a.end()); is_built=true; }
 public:
   static_map(void){}
   void emplace(const KEY& key, const VAL& val){
@@ -29,12 +29,12 @@ public:
     a.emplace_back(std::make_pair(key, val));
   }
   bool count(const KEY& key)const{
-    if(!is_built){make(); is_built=true;}
+    if(!is_built)make();
     int idx=my_lower_bound(key);
     return idx!=a.size()&&a[idx].first==key;
   }
   VAL& operator[](const KEY& key){
-    if(!is_built){make(); is_built=true;}
+    if(!is_built)make();
     int idx=my_lower_bound(key);
     assert(idx!=a.size()&&a[idx].first==key);
     return a[idx].second;
