@@ -31,6 +31,8 @@ const int inf = 1001001001001001001LL;
 const string ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const string abc = "abcdefghijklmnopqrstuvwxyz";
 const int mod = 998244353;
+const int dh[] = {-1,1,0,0};
+const int dw[] = {0,0,-1,1};
 
 // In-line chmin/chmax
 template<typename T> inline bool chmax(T &a, T b) { return ((a < b) ? (a = b, true) : (false)); }
