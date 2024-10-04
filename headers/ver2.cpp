@@ -15,6 +15,7 @@ using mint = atcoder::modint998244353;
 
 // Macro
 #define rep(i,n) for(int i=0;i<(int)(n);i++)
+#define gor(i,s,n) for(int i=(s);i<(int)(n);i++)
 #define FOR(i,s,n) for(int i=(s);i<(int)(n);i++)
 
 #define all(x) x.begin(), x.end()
