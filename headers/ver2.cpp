@@ -52,5 +52,9 @@ istream&operator>>(istream&is,mint&a){int x;is>>x;a=mint(x);return is;}
 
 
 
+////////////////////////////////////////////////////////////////////////////////
+
+
+
 signed main(void){
 }
