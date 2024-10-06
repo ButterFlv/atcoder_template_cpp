@@ -9,7 +9,7 @@ struct Init{Init(){ios::sync_with_stdio(0);cin.tie(0);cout<<fixed<<setprecision(
 // Simplify type notation
 using ll = long long; using ull = unsigned long long;
 #define int ll
-using vi = vector<int>; using vii = vector<vi>; using viii = vector<vii>;
+using vi = vector<int>; using vvi = vector<vi>; using vvvi = vector<vii>;
 using pii = pair<int,int>;
 using mint = atcoder::modint998244353;
 
