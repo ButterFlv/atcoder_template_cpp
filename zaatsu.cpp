@@ -6,8 +6,6 @@ class zaatsu{
 private:
   std::vector<T> a;
   bool is_built=true;
-public:
-  void insert(const T& x){a.emplace_back(x); is_built=false;}
   void make(void){
     if(!is_built){
       std::sort(a.begin(),a.end());
@@ -15,6 +13,8 @@ public:
       is_built=true;
     }
   }
+public:
+  void insert(const T& x){a.emplace_back(x); is_built=false;}
   int operator[](const T& x){
     make();
     int idx=std::lower_bound(a.begin(),a.end(),x)-a.begin();
@@ -22,7 +22,7 @@ public:
     return idx;
   }
   const T& inv(int k){make(); return a[k];}
-  size_t size(void){return a.size();}
+  size_t size(void){make(); return a.size();}
   auto begin(void){make(); return a.begin();}
   auto end(void){make(); return a.end();}
 };
